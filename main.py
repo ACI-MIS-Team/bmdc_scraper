@@ -45,7 +45,7 @@ url=f'https://verify.bmdc.org.bd/'
 browser_name="chrome"
 headless=True
 
-def open_selenium_browser(browser_name: str, headless: bool, )->tuple[WebDriver, str]:
+def open_selenium_browser(browser_name: str, headless: bool, ):
     class Config:
         selenium_web_browser = browser_name
         selenium_headless = headless
