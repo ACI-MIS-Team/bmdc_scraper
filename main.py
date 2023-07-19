@@ -42,7 +42,7 @@ logging.basicConfig(level=logging.CRITICAL)
 BrowserOptions = Union[ChromeOptions, EdgeOptions, FirefoxOptions, SafariOptions]
 
 url=f'https://verify.bmdc.org.bd/'
-browser_name="chrome"
+browser_name="firefox"
 headless=True
 
 def open_selenium_browser(browser_name: str, headless: bool, ):
