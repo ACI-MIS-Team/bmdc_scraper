@@ -68,7 +68,8 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
 
     if config.selenium_web_browser == "firefox":
         if config.selenium_headless:
-            options.headless = True
+            if headless:
+                options.add_argument("--headless")
             options.add_argument("--disable-gpu")
         driver = FirefoxDriver(
             service=GeckoDriverService(GeckoDriverManager().install()), options=options
