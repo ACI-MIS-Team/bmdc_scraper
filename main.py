@@ -42,7 +42,7 @@ logging.basicConfig(level=logging.CRITICAL)
 BrowserOptions = Union[ChromeOptions, EdgeOptions, FirefoxOptions, SafariOptions]
 
 url=f'https://verify.bmdc.org.bd/'
-browser_name="firefox"
+browser_name="chrome"
 headless=True
 
 def open_selenium_browser(browser_name: str, headless: bool, ):
@@ -68,8 +68,8 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
 
     if config.selenium_web_browser == "firefox":
         if config.selenium_headless:
-            if headless:
-                options.add_argument("--headless")
+
+            options.add_argument("--headless")
             options.add_argument("--disable-gpu")
         driver = FirefoxDriver(
             service=GeckoDriverService(GeckoDriverManager().install()), options=options
@@ -128,6 +128,7 @@ def go_to_page_with_selenium(driver, url: str="https://verify.bmdc.org.bd/") -> 
 def get_captcha_image(page_source)-> Image:
     # page_source = requests.get(url=url)
     bs_html = BeautifulSoup(page_source, 'html.parser')
+    print(page_source)
     captcha_img_url = bs_html.find('div', {"id": "captcha1"}).find("img")["src"]
     img = np.array(Image.open(requests.get(captcha_img_url, stream = True).raw))
 
@@ -388,7 +389,8 @@ if __name__=='__main__':
     doc_id_start = args.start
     doc_id_end = args.end
 
-    workers = 8
+    num_processes = mp.cpu_count()
+    workers = num_processes//3
 
     # # Main Function start
     # print("Starting Browser. ------------------")
