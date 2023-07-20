@@ -128,7 +128,8 @@ def go_to_page_with_selenium(driver, url: str="https://verify.bmdc.org.bd/") -> 
 def get_captcha_image(page_source)-> Image:
     # page_source = requests.get(url=url)
     bs_html = BeautifulSoup(page_source, 'html.parser')
-    print(page_source)
+    with open("page_source.txt", "w") as file:
+        file.write(page_source)
     captcha_img_url = bs_html.find('div', {"id": "captcha1"}).find("img")["src"]
     img = np.array(Image.open(requests.get(captcha_img_url, stream = True).raw))
 
