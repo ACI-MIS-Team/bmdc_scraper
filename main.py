@@ -134,7 +134,7 @@ def get_captcha_image(page_source)-> Image:
     captcha_img_url = bs_html.find('div', {"id": "captcha1"}).find("img")["src"]
     # print(captcha_img_url)
     # img = np.array(Image.open(requests.get(captcha_img_url, stream = True).raw))
-    img = np.array(Image.open(BytesIO(requests.get(captcha_img_url,).content)))
+    img = np.array(Image.open(BytesIO(requests.get(captcha_img_url,stream = True).content)))
 
     return img[1:29,1:99,:]
 
@@ -384,7 +384,7 @@ def main_mp2(doc_id_start, doc_id_end, workers=4):
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description="Give the range of doctor id to scrape")
     parser.add_argument('-s','--start', type=int, help='website', default=11)
-    parser.add_argument('-e', '--end', type=int, help='website', default=28)
+    parser.add_argument('-e', '--end', type=int, help='website', default=15)
     args = parser.parse_args()
 
     # Start Time
