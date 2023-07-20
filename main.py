@@ -37,6 +37,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager as EdgeDriverManager
+from io import BytesIO
 
 logging.basicConfig(level=logging.CRITICAL)
 BrowserOptions = Union[ChromeOptions, EdgeOptions, FirefoxOptions, SafariOptions]
@@ -131,8 +132,9 @@ def get_captcha_image(page_source)-> Image:
     with open("page_source.txt", "w") as file:
         file.write(page_source)
     captcha_img_url = bs_html.find('div', {"id": "captcha1"}).find("img")["src"]
-    print(captcha_img_url)
-    img = np.array(Image.open(requests.get(captcha_img_url, stream = True).raw))
+    # print(captcha_img_url)
+    # img = np.array(Image.open(requests.get(captcha_img_url, stream = True).raw))
+    img = np.array(Image.open(BytesIO(requests.get(captcha_img_url,).content)))
 
     return img[1:29,1:99,:]
 
