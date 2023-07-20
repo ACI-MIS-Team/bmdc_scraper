@@ -1,0 +1,232 @@
+<body class="nicescroll" oncontextmenu="return false;" style="overflow: hidden;">
+<!-- container starts -->
+<div id="capture" class="form-body">
+<div class="website-logo">
+<a href="https://verify.bmdc.org.bd/">
+<div class="logo">
+<img class="logo-size" src="https://verify.bmdc.org.bd/cis/portal/img/logo-light.svg" alt="">
+</div>
+</a>
+</div>
+<div class="row">
+<div class="img-holder">
+<div class="bg"></div>
+<div class="info-holder">
+<h3>BM&amp;DC Doctor's Profile Web Service</h3>
+<p>Welcome to the Bangladesh Medical &amp; Dental Council doctors profile search page.<br><br><small>For detail verification please email to: <script type="text/javascript">
+	//<![CDATA[
+	var l=new Array();
+	l[0] = '>';
+	l[1] = 'a';
+	l[2] = '/';
+	l[3] = '<';
+	l[4] = '|100';
+	l[5] = '|98';
+	l[6] = '|46';
+	l[7] = '|103';
+	l[8] = '|114';
+	l[9] = '|111';
+	l[10] = '|46';
+	l[11] = '|99';
+	l[12] = '|100';
+	l[13] = '|109';
+	l[14] = '|98';
+	l[15] = '|64';
+	l[16] = '|111';
+	l[17] = '|102';
+	l[18] = '|110';
+	l[19] = '|105';
+	l[20] = '>';
+	l[21] = '"';
+	l[22] = '|100';
+	l[23] = '|98';
+	l[24] = '|46';
+	l[25] = '|103';
+	l[26] = '|114';
+	l[27] = '|111';
+	l[28] = '|46';
+	l[29] = '|99';
+	l[30] = '|100';
+	l[31] = '|109';
+	l[32] = '|98';
+	l[33] = '|64';
+	l[34] = '|111';
+	l[35] = '|102';
+	l[36] = '|110';
+	l[37] = '|105';
+	l[38] = ':';
+	l[39] = 'o';
+	l[40] = 't';
+	l[41] = 'l';
+	l[42] = 'i';
+	l[43] = 'a';
+	l[44] = 'm';
+	l[45] = '"';
+	l[46] = '=';
+	l[47] = 'f';
+	l[48] = 'e';
+	l[49] = 'r';
+	l[50] = 'h';
+	l[51] = ' ';
+	l[52] = 'a';
+	l[53] = '<';
+
+	for (var i = l.length-1; i >= 0; i=i-1) {
+		if (l[i].substring(0, 1) === '|') document.write("&#"+unescape(l[i].substring(1))+";");
+		else document.write(unescape(l[i]));
+	}
+	//]]>
+</script><a href="mailto:info@bmdc.org.bd">info@bmdc.org.bd</a></small><br><br><a href="https://verify.bmdc.org.bd/" class="btn btn-sm btn-warning"><i class="fas fa-search"></i> Click to Find Registered Doctor</a><br><br><small>Telephone:<br>+88-02-223385669, +88-02-223385685, +88-02-223385686, +88-02-223356727, +88-02-9555538</small><br><br><small>Solution By <a href="https://www.promiti.com/" target="_blank" class="text-white">Promiti Computers &amp; Network (Pvt.) Ltd.</a></small></p>
+</div>
+</div>
+<div class="form-holder">
+<div class="form-content form-lg">
+<div class="form-items">
+<h3>Find Registered Doctor</h3>
+<ul class="nav nav-tabs" id="stepsTabs" role="tablist">
+<li class="nav-item">
+<a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Registration</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Portable Card</a>
+</li>
+</ul>
+<div class="tab-content" id="stepsTabContent">
+<!-- message container starts -->
+<!-- message container ends -->
+<div id="tab1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="tab1-tab">
+<form action="https://verify.bmdc.org.bd/regfind" id="regform" name="regform" class="form-horizontal needs-validation" autocomplete="off" method="post" accept-charset="utf-8">
+                                                                     <input type="hidden" name="bmdckyc_csrf_token" value="79f3ed983482116a352e49b3a55841bd">
+<div class="form-subtitle"></div>
+<div class="form-group">
+<label>BM&amp;DC Full Registration Number</label>
+<input id="reg_ful_no" name="reg_ful_no" type="text" class="form-control p-integer" maxlength="6" value="" required="">
+</div>
+<div class="form-group">
+<label>Doctor Type</label>
+<div class="custom-options">
+<input id="reg_student1" name="reg_student" type="radio" value="1" checked="checked"><label for="reg_student1">MBBS</label>
+<input id="reg_student2" name="reg_student" type="radio" value="2"><label for="reg_student2">BDS</label>
+</div>
+</div>
+<div class="inline-el-holder">
+<div class="inline-el">
+<label>Captcha Code</label>
+<div id="captcha1">
+<img src="https://verify.bmdc.org.bd/cpt/1689823890.4743.jpg" style="width: 100; height: 30; border: 0;" alt=" ">&nbsp;&nbsp;<a id="reload" onclick="reload_captcha();" class="ml-2"><i class="fas fa-sync"></i></a>
+</div>
+</div>
+<div class="inline-el">
+<label></label>
+<input id="captcha_code" name="captcha_code" type="text" class="form-control sm-content" maxlength="4" value="" required="">
+</div>
+</div>
+<div class="form-button text-left">
+<input id="action_key" name="action_key" type="hidden" class="" value="YTBel86gimbM">
+<input id="action_flag" name="action_flag" type="hidden" class="" value="1">
+<button id="submit" name="submit" type="submit" class="ibtn"><i class="fa fa-search"></i> Search</button>
+</div>
+</form></div>
+<div id="tab2" class="tab-pane fade" role="tabpanel" aria-labelledby="tab2-tab">
+<form action="https://verify.bmdc.org.bd/kycfind" id="kycform" name="kycform" class="form-horizontal needs-validation" autocomplete="off" method="post" accept-charset="utf-8">
+<input type="hidden" name="bmdckyc_csrf_token" value="79f3ed983482116a352e49b3a55841bd">                            
+<div class="form-subtitle"></div>
+<div class="form-group">
+<label>Portable Card Number</label>
+<input id="reg_kyc_rfid" name="reg_kyc_rfid" type="text" class="form-control p-integer" maxlength="10" value="" required="">
+</div>
+<div class="inline-el-holder">
+<div class="inline-el">
+<label>Captcha Code</label>
+<div id="captcha2">
+<img src="https://verify.bmdc.org.bd/cpt/1689823890.4743.jpg" style="width: 100; height: 30; border: 0;" alt=" ">&nbsp;&nbsp;<a id="reload" onclick="reload_captcha();" class="ml-2"><i class="fas fa-sync"></i></a>
+</div>
+</div>
+<div class="inline-el">
+<label></label>
+<input id="captcha_code" name="captcha_code" type="text" class="form-control sm-content" maxlength="4" value="" required="">
+</div>
+</div>
+<div class="form-button text-left">
+<input id="action_key" name="action_key" type="hidden" class="" value="o5I3Rk0p4sji">
+<input id="action_flag" name="action_flag" type="hidden" class="" value="1">
+<button id="submit" name="submit" type="submit" class="ibtn"><i class="fa fa-search"></i> Search</button>
+</div>
+</form></div>
+</div>
+</div>
+<script>
+(function() {
+	'use strict';
+	
+	window.addEventListener('load', function() {
+		var forms = document.getElementsByClassName('needs-validation');
+
+		var validation = Array.prototype.filter.call(forms, function(form) {		
+			form.addEventListener('submit', function(event) {
+				if (form.checkValidity() === false) {
+					event.preventDefault();
+					event.stopPropagation();
+				}
+				
+				$("#submit").attr("disabled", true);
+				$("#submit").html('<i id="spinner" class="fas fa-spinner fa-spin"></i> PLEASE WAIT...');
+				
+				form.classList.add('was-validated');
+			}, false);
+		});
+	}, false);
+})();
+
+function reload_captcha() {
+	$.ajax({
+		url: "https://verify.bmdc.org.bd/portal/captcha",
+		cache: false
+	}).done(function(html) {
+		$("#captcha1").html(html);
+		$("#captcha2").html(html);
+	});
+}
+</script></div>
+</div>
+</div>
+</div>
+<!-- container ends -->
+<!-- codeigniter profiler starts -->
+<!-- codeigniter profiler ends -->
+<style type="text/css">
+.nicescroll-rails-vr .nicescroll-cursors {
+	background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+	animation: pace-stripe-animation 500ms linear infinite;
+	background-size: 20px 20px;
+}
+
+.nicescroll-rails.nicescroll-rails-hr {
+	opacity: 0 !important;
+	display:none;
+}
+
+@keyframes pace-stripe-animation {
+	from { background-position-y: 0; }
+	to { background-position-y: 100%; }
+}  
+</style>
+<script>
+$('.counter').counterUp({
+	delay: 10,
+	time: 500
+});
+
+$(document).ready(function() {
+	$(".nicescroll").niceScroll({
+		cursorwidth: 8,
+		cursoropacitymin: 0.6,
+		cursorcolor: '#999999',
+		cursorborder: 'none',
+		cursorborderradius: 4
+	});
+});
+</script>
+
+
+<div id="ascrail2000" class="nicescroll-rails nicescroll-rails-vr" style="width: 8px; z-index: auto; cursor: default; position: fixed; top: 0px; height: 100%; right: 0px; opacity: 1;"><div class="nicescroll-cursors" style="position: relative; top: 0px; float: right; width: 8px; height: 398px; background-color: rgb(153, 153, 153); border: none; background-clip: padding-box; border-radius: 4px;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails nicescroll-rails-hr" style="height: 8px; z-index: auto; position: fixed; left: 0px; width: 100%; bottom: 0px; cursor: default; display: none; opacity: 1;"><div class="nicescroll-cursors" style="position: absolute; top: 0px; height: 8px; width: 780px; background-color: rgb(153, 153, 153); border: none; background-clip: padding-box; border-radius: 4px; left: 0px;"></div></div></body>
