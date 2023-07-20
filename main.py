@@ -131,6 +131,7 @@ def get_captcha_image(page_source)-> Image:
     with open("page_source.txt", "w") as file:
         file.write(page_source)
     captcha_img_url = bs_html.find('div', {"id": "captcha1"}).find("img")["src"]
+    print(captcha_img_url)
     img = np.array(Image.open(requests.get(captcha_img_url, stream = True).raw))
 
     return img[1:29,1:99,:]
