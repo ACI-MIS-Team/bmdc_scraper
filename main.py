@@ -38,13 +38,14 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager as EdgeDriverManager
 from io import BytesIO
+from tqdm import tqdm
 
 logging.basicConfig(level=logging.CRITICAL)
 BrowserOptions = Union[ChromeOptions, EdgeOptions, FirefoxOptions, SafariOptions]
 
 url=f'https://verify.bmdc.org.bd/'
-browser_name="chrome"
-headless=True
+# browser_name="edge"
+# headless=True
 
 def open_selenium_browser(browser_name: str, headless: bool, ):
     class Config:
@@ -52,32 +53,43 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
         selenium_headless = headless
 
     config = Config()
-
     logging.getLogger("selenium").setLevel(logging.CRITICAL)
 
+    # Options base definition
     options_available: dict[str, Type[BrowserOptions]] = {
         "chrome": ChromeOptions,
         "edge": EdgeOptions,
         "firefox": FirefoxOptions,
         "safari": SafariOptions,
     }
-
     options: BrowserOptions = options_available[config.selenium_web_browser]()
     options.add_argument(
         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.49 Safari/537.36"
     )
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    if config.selenium_headless:
+        options.add_argument("--headless")
+        options.add_argument("--disable-gpu")
 
     if config.selenium_web_browser == "firefox":
-        if config.selenium_headless:
 
-            options.add_argument("--headless")
-            options.add_argument("--disable-gpu")
+        service = GeckoDriverService(GeckoDriverManager().install())
+        # service.command_line_args()
+        # service.service_args.remove('--verbose')
+        # service.service_args.append('--log-path=/dev/null')
+
         driver = FirefoxDriver(
-            service=GeckoDriverService(GeckoDriverManager().install()), options=options
+            service=service, options=options
         )
     elif config.selenium_web_browser == "edge":
+
+        service = EdgeDriverService(EdgeDriverManager().install())
+        # service.command_line_args()
+        # service.service_args.remove('--verbose')
+        # service.service_args.append('--log-path=/dev/null')
+
         driver = EdgeDriver(
-            service=EdgeDriverService(EdgeDriverManager().install()), options=options
+            service=service, options=options
         )
     elif config.selenium_web_browser == "safari":
         # Requires a bit more setup on the users end
@@ -87,18 +99,17 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
         if platform == "linux" or platform == "linux2":
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--remote-debugging-port=9222")
-
         options.add_argument("--no-sandbox")
-        if config.selenium_headless:
-            options.add_argument("--headless=new")
-            options.add_argument("--disable-gpu")
 
         chromium_driver_path = Path("/usr/bin/chromedriver")
+        service = ChromeDriverService(str(chromium_driver_path)) if chromium_driver_path.exists() else ChromeDriverService(ChromeDriverManager().install())
+
+        # service.command_line_args()
+        # service.service_args.remove('--verbose')
+        # service.service_args.append('--log-path=/dev/null')
 
         driver = ChromeDriver(
-            service=ChromeDriverService(str(chromium_driver_path))
-            if chromium_driver_path.exists()
-            else ChromeDriverService(ChromeDriverManager().install()),
+            service=service,
             options=options,
         )
     return driver
@@ -241,9 +252,12 @@ def get_doctor_dict_selenium(driver):
 
     return doc_entry_dict
 
+
 ### These functions need to be organized
 def doc_entry_generator(driver, id_start, id_end):
     id = id_start
+
+    pbar = tqdm(total=id_end-id_start+1)
     while id <= id_end:
         driver, page_source = go_to_page_with_selenium(driver)
         captcha_img = get_captcha_image(page_source)
@@ -258,9 +272,12 @@ def doc_entry_generator(driver, id_start, id_end):
         except NoSuchElementException:
             pass
         time.sleep(3)
+        pbar.update(1)
+
+    pbar.close()
 
 
-def single_doc_entry(id):
+def single_doc_entry(id, browser_name, headless):
     driver = open_selenium_browser(browser_name, headless=headless)
 
     captcha_incorrect = True
@@ -279,7 +296,7 @@ def single_doc_entry(id):
         time.sleep(3)
 
 
-def mp_doc_entry(id_start, id_end):
+def mp_doc_entry(id_start, id_end, browser_name, headless):
     driver = open_selenium_browser(browser_name, headless=headless)
     doc_list = []
     id = id_start
@@ -310,7 +327,7 @@ def divide_doc_ids(doc_id_start, doc_id_end, n_workers):
 
 
 ## Whole processes
-def main_normal(doc_id_start, doc_id_end):
+def main_normal(doc_id_start, doc_id_end, browser_name, headless):
     driver = open_selenium_browser(browser_name, headless=headless)
     rows = doc_entry_generator(driver, doc_id_start, doc_id_end)
     df = pd.DataFrame(rows, columns=["name", "bmdc_code", "registration_year", "registration_validity", "dob",
@@ -318,7 +335,7 @@ def main_normal(doc_id_start, doc_id_end):
     return df
 
 
-def main_multithread(doc_id_start, doc_id_end, workers=4):
+def main_multithread(doc_id_start, doc_id_end, browser_name, headless, workers=4):
     # # Main Function start
     # print("Starting Browser. ------------------")
     # driver = open_selenium_browser(browser_name, headless=headless)
@@ -333,7 +350,7 @@ def main_multithread(doc_id_start, doc_id_end, workers=4):
                                "father_name", "mother_name", "permanent_add", "reg_status"])
 
     with cf.ThreadPoolExecutor(max_workers=workers) as pool:
-        fs = [pool.submit(mp_doc_entry, start_id, end_id) for start_id, end_id in zip(starts, ends)]
+        fs = [pool.submit(mp_doc_entry, start_id, end_id, browser_name, headless) for start_id, end_id in zip(starts, ends)]
 
         for f in cf.as_completed(fs):
             data_generator = f.result()
@@ -343,24 +360,22 @@ def main_multithread(doc_id_start, doc_id_end, workers=4):
     return df
 
 
-def main_multiprocess(doc_id_start, doc_id_end, workers=4):
+def main_multiprocess(doc_id_start, doc_id_end, browser_name, headless, workers=4):
 
     df = pd.DataFrame(columns=["name", "bmdc_code", "registration_year", "registration_validity", "dob",
                                "father_name", "mother_name", "permanent_add", "reg_status"])
 
     with cf.ProcessPoolExecutor(max_workers=workers) as executor:
-        fs = [executor.submit(single_doc_entry, i) for i in range(doc_id_start, doc_id_end+1)]
+        fs = [executor.submit(single_doc_entry, i, browser_name, headless) for i in range(doc_id_start, doc_id_end+1)]
+        total_tasks = doc_id_end - doc_id_start + 1
 
-        for f in cf.as_completed(fs):
+        for f in tqdm(cf.as_completed(fs), total=total_tasks, bar_format='{l_bar}{bar:20}{r_bar}{bar:-20b} {percentage:3.0f}%'):
             df = df._append(f.result(), ignore_index=True)
-            # data_generator = f.result()
-            # for row in data_generator:
-            #     df = df._append(row, ignore_index=True)
 
     return df
 
 
-def main_mp2(doc_id_start, doc_id_end, workers=4):
+def main_mp2(doc_id_start, doc_id_end, browser_name, headless, workers=4):
     # Divide to smaller sub-tasks: Divide the doc-ids into `n_workers` parts
     starts, ends = divide_doc_ids(doc_id_start, doc_id_end, n_workers=workers)
     print(f"starts: {starts}")
@@ -370,7 +385,7 @@ def main_mp2(doc_id_start, doc_id_end, workers=4):
                                "father_name", "mother_name", "permanent_add", "reg_status"])
 
     with cf.ProcessPoolExecutor(max_workers=workers) as executor:
-        fs = [executor.submit(mp_doc_entry, start_id, end_id) for start_id, end_id in zip(starts, ends)]
+        fs = [executor.submit(mp_doc_entry, start_id, end_id, browser_name, headless) for start_id, end_id in zip(starts, ends)]
 
         for f in cf.as_completed(fs):
             df = df._append(f.result(), ignore_index=True)
@@ -385,6 +400,9 @@ if __name__=='__main__':
     parser = argparse.ArgumentParser(description="Give the range of doctor id to scrape")
     parser.add_argument('-s','--start', type=int, help='website', default=11)
     parser.add_argument('-e', '--end', type=int, help='website', default=15)
+    parser.add_argument('-b', '--browser', type=str, help='Browser name', default="chrome")
+    parser.add_argument('-t', '--type', type=bool, help='Browser type', default=True)
+
     args = parser.parse_args()
 
     # Start Time
@@ -392,22 +410,25 @@ if __name__=='__main__':
 
     doc_id_start = args.start
     doc_id_end = args.end
+    browser_name = args.browser
+    headless = args.type
 
     num_processes = mp.cpu_count()
-    workers = num_processes//3
+    workers = num_processes//2
+    print(f"Number of parallel processes: {workers}")
 
     # # Main Function start
     # print("Starting Browser. ------------------")
     # driver = open_selenium_browser(browser_name, headless=headless)
     # print("Browser Opened. Now scraping. ------------------")
 
-    # df = main_multithread(doc_id_start, doc_id_end, workers=workers)
-    # df = main_normal(doc_id_start, doc_id_end)
-    df = main_multiprocess(doc_id_start, doc_id_end, workers=workers)
-    # df = main_mp2(doc_id_start, doc_id_end, workers=workers)
+    # df = main_multithread(doc_id_start, doc_id_end, browser_name, headless, workers=workers)
+    # df = main_normal(doc_id_start, doc_id_end,browser_name, headless)
+    df = main_multiprocess(doc_id_start, doc_id_end, browser_name, headless, workers=workers)
+    # df = main_mp2(doc_id_start, doc_id_end, browser_name, headless, workers=workers)
 
     df.to_csv(f"doctor_{doc_id_start}_{doc_id_end}.csv", index=False)
 
     elapsed_time = time.time() - star_time
-    print(elapsed_time)
+    print(f"Total Time taken: {elapsed_time//60} min, {elapsed_time - 60 * elapsed_time//60} sec.")
 
