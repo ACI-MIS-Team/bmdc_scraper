@@ -47,6 +47,8 @@ url=f'https://verify.bmdc.org.bd/'
 # browser_name="edge"
 # headless=True
 
+
+
 def open_selenium_browser(browser_name: str, headless: bool, ):
     class Config:
         selenium_web_browser = browser_name
@@ -63,9 +65,9 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
         "safari": SafariOptions,
     }
     options: BrowserOptions = options_available[config.selenium_web_browser]()
-    options.add_argument(
-        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.49 Safari/537.36"
-    )
+    # options.add_argument(
+    #     "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.49 Safari/537.36"
+    # )
 
     if config.selenium_headless:
         options.add_argument("--headless")
@@ -73,7 +75,7 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
 
     if config.selenium_web_browser == "firefox":
 
-        service = GeckoDriverService(GeckoDriverManager().install(), log_path='/dev/null')
+        service = GeckoDriverService(GeckoDriverManager().install(), )
         # service.command_line_args()
         # service.service_args.remove('--verbose')
         # service.service_args.append('--log-path=/dev/null')
@@ -83,7 +85,7 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
         )
     elif config.selenium_web_browser == "edge":
 
-        service = EdgeDriverService(EdgeDriverManager().install(), log_path='/dev/null')
+        service = EdgeDriverService(EdgeDriverManager().install(), )
         # service.command_line_args()
         # service.service_args.remove('--verbose')
         # service.service_args.append('--log-path=/dev/null')
@@ -104,7 +106,7 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
         chromium_driver_path = Path("/usr/bin/chromedriver")
-        service = ChromeDriverService(str(chromium_driver_path), log_path='/dev/null') if chromium_driver_path.exists() else ChromeDriverService(ChromeDriverManager().install(), log_path='/dev/null')
+        service = ChromeDriverService(str(chromium_driver_path), ) if chromium_driver_path.exists() else ChromeDriverService(ChromeDriverManager().install(), )
 
         # service.command_line_args()
         # service.service_args.remove('--verbose')
@@ -116,6 +118,16 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
         )
     return driver
 
+
+# class WebDriverContextManager:
+#     def __enter__(self, browser_name: str, headless: bool)
+#         print("Entering the block")
+#         self.driver = open_selenium_browser(browser_name, headless)
+#         return self.driver
+#
+#     def __exit__(self, exc_type, exc_value, traceback):
+#         self.driver.quit()
+#         print("Exiting the block")
 
 def go_to_page_with_selenium(driver, url: str="https://verify.bmdc.org.bd/") -> tuple[WebDriver, str]:
     """Scrape text from a website using selenium
@@ -275,7 +287,6 @@ def doc_entry_generator(driver, id_start, id_end):
             pass
         time.sleep(3)
         pbar.update(1)
-
     pbar.close()
 
 
@@ -291,6 +302,7 @@ def single_doc_entry(id, browser_name, headless):
         driver, _ = submit_form_selenium(driver, id, captcha_solution)
         try:
             doc_entry_dict = get_doctor_dict_selenium(driver)
+            driver.close()
             return doc_entry_dict
         except NoSuchElementException:
             captcha_incorrect = True
@@ -316,6 +328,7 @@ def mp_doc_entry(id_start, id_end, browser_name, headless):
         except NoSuchElementException:
             pass
         time.sleep(3)
+    driver.close()
     return doc_list
 
 ## Helpers
@@ -334,6 +347,7 @@ def main_normal(doc_id_start, doc_id_end, browser_name, headless):
     rows = doc_entry_generator(driver, doc_id_start, doc_id_end)
     df = pd.DataFrame(rows, columns=["name", "bmdc_code", "registration_year", "registration_validity", "dob",
                                "father_name", "mother_name", "permanent_add", "reg_status"])
+    driver.quit()
     return df
 
 
@@ -353,8 +367,9 @@ def main_multithread(doc_id_start, doc_id_end, browser_name, headless, workers=4
 
     with cf.ThreadPoolExecutor(max_workers=workers) as pool:
         fs = [pool.submit(mp_doc_entry, start_id, end_id, browser_name, headless) for start_id, end_id in zip(starts, ends)]
+        total_tasks = doc_id_end - doc_id_start + 1
 
-        for f in cf.as_completed(fs):
+        for f in tqdm(cf.as_completed(fs), total=total_tasks, bar_format='{l_bar}{bar:20}{r_bar}{bar:-20b} {percentage:3.0f}%'):
             data_generator = f.result()
             for row in data_generator:
                 df = df._append(row, ignore_index=True)
@@ -416,7 +431,7 @@ if __name__=='__main__':
     headless = args.type
 
     num_processes = mp.cpu_count()
-    workers = num_processes//2
+    workers = num_processes//4
     print(f"Number of parallel processes: {workers}")
 
     # # Main Function start
@@ -432,5 +447,5 @@ if __name__=='__main__':
     df.to_csv(f"doctor_{doc_id_start}_{doc_id_end}.csv", index=False)
 
     elapsed_time = time.time() - star_time
-    print(f"Total Time taken: {elapsed_time//60} min, {elapsed_time - 60 * elapsed_time//60} sec.")
+    print(f"Total Time taken: {elapsed_time//60} min, {elapsed_time - 60 * (elapsed_time//60)} sec.")
 
