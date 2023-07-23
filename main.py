@@ -431,7 +431,7 @@ if __name__=='__main__':
     headless = args.type
 
     num_processes = mp.cpu_count()
-    workers = num_processes//4
+    workers = num_processes//2
     print(f"Number of parallel processes: {workers}")
 
     # # Main Function start
