@@ -73,7 +73,7 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
 
     if config.selenium_web_browser == "firefox":
 
-        service = GeckoDriverService(GeckoDriverManager().install())
+        service = GeckoDriverService(GeckoDriverManager().install(), log_path='/dev/null')
         # service.command_line_args()
         # service.service_args.remove('--verbose')
         # service.service_args.append('--log-path=/dev/null')
@@ -83,7 +83,7 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
         )
     elif config.selenium_web_browser == "edge":
 
-        service = EdgeDriverService(EdgeDriverManager().install())
+        service = EdgeDriverService(EdgeDriverManager().install(), log_path='/dev/null')
         # service.command_line_args()
         # service.service_args.remove('--verbose')
         # service.service_args.append('--log-path=/dev/null')
@@ -104,7 +104,7 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
         chromium_driver_path = Path("/usr/bin/chromedriver")
-        service = ChromeDriverService(str(chromium_driver_path)) if chromium_driver_path.exists() else ChromeDriverService(ChromeDriverManager().install())
+        service = ChromeDriverService(str(chromium_driver_path), log_path='/dev/null') if chromium_driver_path.exists() else ChromeDriverService(ChromeDriverManager().install(), log_path='/dev/null')
 
         # service.command_line_args()
         # service.service_args.remove('--verbose')
