@@ -66,7 +66,7 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
     options.add_argument(
         "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.5615.49 Safari/537.36"
     )
-    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+
     if config.selenium_headless:
         options.add_argument("--headless")
         options.add_argument("--disable-gpu")
@@ -88,6 +88,7 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
         # service.service_args.remove('--verbose')
         # service.service_args.append('--log-path=/dev/null')
 
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
         driver = EdgeDriver(
             service=service, options=options
         )
@@ -100,6 +101,7 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--remote-debugging-port=9222")
         options.add_argument("--no-sandbox")
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
         chromium_driver_path = Path("/usr/bin/chromedriver")
         service = ChromeDriverService(str(chromium_driver_path)) if chromium_driver_path.exists() else ChromeDriverService(ChromeDriverManager().install())
