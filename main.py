@@ -467,7 +467,7 @@ if __name__=='__main__':
     parser.add_argument('-s','--start', type=int, help='website', default=11)
     parser.add_argument('-e', '--end', type=int, help='website', default=15)
     parser.add_argument('-b', '--browser', type=str, help='Browser name', default="chrome")
-    parser.add_argument('-t', '--type', type=bool, help='Browser type', default=True)
+    parser.add_argument('-h', '--headless', action='store_false',  help='Browser type', default=True)
 
     args = parser.parse_args()
 
@@ -477,7 +477,7 @@ if __name__=='__main__':
     doc_id_start = args.start
     doc_id_end = args.end
     browser_name = args.browser
-    headless = args.type
+    headless = args.headless
 
     num_processes = mp.cpu_count()
     workers = num_processes//2
