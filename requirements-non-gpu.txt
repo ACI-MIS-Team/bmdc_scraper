@@ -1,0 +1,38 @@
+beautifulsoup4==4.11.1
+easyocr==1.7.0
+matplotlib==3.7.1
+numpy==1.24.2
+opencv_python==4.5.4.60
+opencv_python_headless==4.5.4.60
+pandas==2.0.1
+Pillow==9.5.0
+Requests==2.31.0
+selenium==4.10.0
+webdriver_manager
+
+# for cpu torch
+--find-links https://download.pytorch.org/whl/cpu/torch/
+torch==2.0.1+cpu
+-f https://download.pytorch.org/whl/cpu/torchvision/
+torchvision==0.15.2+cpu
+
+
+# # for CUDA 11.7 torch on Linux
+# --extra-index-url https://download.pytorch.org/whl/cu117/index.html
+# # -f https://download.pytorch.org/whl/cu117/
+# torch==2.0.1
+
+
+
+# # for MPS accelerated torch on Mac
+# --pre --extra-index-url https://download.pytorch.org/whl/cpu; sys_platform == "darwin"
+# torch==2.0.1;  sys_platform == "darwin"
+# torchvision==0.15.2; sys_platform == "darwin"
+#
+# # For windows
+# --pre --extra-index-url https://download.pytorch.org/whl/cpu; sys_platform == "darwin"
+
+# for CPU torch on Mac
+# torch==1.10.2; sys_platform == "darwin"
+# torchvision==0.11.3; sys_platform == "darwin"
+# pytorch-lightning==1.5.10; sys_platform == "darwin"
