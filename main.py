@@ -45,7 +45,7 @@ from webdriver_manager.core.utils import ChromeType
 from io import BytesIO
 from tqdm import tqdm
 
-# logging.basicConfig(filename='logfile.txt', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.basicConfig(filename='logfile.txt', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger('webdriver_manager').setLevel(logging.ERROR)
 logger = logging.getLogger(__name__)
 BrowserOptions = Union[ChromeOptions, EdgeOptions, FirefoxOptions, SafariOptions]
