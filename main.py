@@ -18,29 +18,36 @@ from concurrent import futures as cf
 
 import pandas as pd
 import time
-from selenium.common.exceptions import WebDriverException, NoSuchElementException
-from selenium.webdriver.chrome.options import Options as ChromeOptions
-from selenium.webdriver.chrome.service import Service as ChromeDriverService
-from selenium.webdriver.chrome.webdriver import WebDriver as ChromeDriver
+
+from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.edge.options import Options as EdgeOptions
-from selenium.webdriver.edge.service import Service as EdgeDriverService
-from selenium.webdriver.edge.webdriver import WebDriver as EdgeDriver
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
-from selenium.webdriver.firefox.service import Service as GeckoDriverService
-from selenium.webdriver.firefox.webdriver import WebDriver as FirefoxDriver
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.safari.options import Options as SafariOptions
-from selenium.webdriver.safari.webdriver import WebDriver as SafariDriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.chrome.service import Service as ChromeService
+
+from selenium.webdriver.edge.options import Options as EdgeOptions
+from selenium.webdriver.edge.service import Service as EdgeService
+
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.firefox.service import Service as GeckoService
+
+from selenium.webdriver.safari.options import Options as SafariOptions
+from selenium.webdriver.safari.webdriver import WebDriver as SafariDriver
+
+from selenium.webdriver.remote.webdriver import WebDriver
+
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager as EdgeDriverManager
+from webdriver_manager.core.utils import ChromeType
 from io import BytesIO
 from tqdm import tqdm
 
-logging.basicConfig(level=logging.CRITICAL)
+# logging.basicConfig(filename='logfile.txt', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+logging.getLogger('webdriver_manager').setLevel(logging.ERROR)
+logger = logging.getLogger(__name__)
 BrowserOptions = Union[ChromeOptions, EdgeOptions, FirefoxOptions, SafariOptions]
 
 url=f'https://verify.bmdc.org.bd/'
@@ -48,8 +55,50 @@ url=f'https://verify.bmdc.org.bd/'
 # headless=True
 
 
+def open_selenium_browser(browser_name: str, headless: bool):
+    # browser_name = "firefox"
+    # headless = False
 
-def open_selenium_browser(browser_name: str, headless: bool, ):
+    options_available = {
+        "chrome": ChromeOptions,
+        "edge": EdgeOptions,
+        "firefox": FirefoxOptions,
+        "safari": SafariOptions,
+    }
+    options = options_available[browser_name]()
+
+    if headless:
+        options.add_argument("--headless")
+        options.add_argument("--disable-gpu")
+
+    if browser_name == "edge":
+        driver = webdriver.Edge(
+            service=EdgeService(
+                EdgeDriverManager().install()
+            ),
+            options=options
+        )
+    elif browser_name == "firefox":
+        options.log.level = "fatal"
+        driver = webdriver.Firefox(
+            service=GeckoService(
+                GeckoDriverManager().install()
+            ),
+            options=options
+        )
+    else:
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
+        driver = webdriver.Chrome(
+            service=ChromeService(
+                ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install()
+            ),
+            options=options
+        )
+
+    return driver
+
+
+def open_selenium_browser_v2(browser_name: str, headless: bool, ):
     class Config:
         selenium_web_browser = browser_name
         selenium_headless = headless
@@ -75,29 +124,29 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
 
     if config.selenium_web_browser == "firefox":
 
-        service = GeckoDriverService(GeckoDriverManager().install(), )
+        service = GeckoService(GeckoDriverManager().install(), )
         # service.command_line_args()
         # service.service_args.remove('--verbose')
         # service.service_args.append('--log-path=/dev/null')
 
-        driver = FirefoxDriver(
+        driver = webdriver.Firefox(
             service=service, options=options
         )
     elif config.selenium_web_browser == "edge":
 
-        service = EdgeDriverService(EdgeDriverManager().install(), )
+        service = EdgeService(EdgeDriverManager().install(), )
         # service.command_line_args()
         # service.service_args.remove('--verbose')
         # service.service_args.append('--log-path=/dev/null')
 
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
-        driver = EdgeDriver(
+        driver = webdriver.Edge(
             service=service, options=options
         )
     elif config.selenium_web_browser == "safari":
         # Requires a bit more setup on the users end
         # See https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari
-        driver = SafariDriver(options=options)
+        driver = webdriver.Safari(options=options)
     else:
         if platform == "linux" or platform == "linux2":
             options.add_argument("--disable-dev-shm-usage")
@@ -106,13 +155,13 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
         options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
         chromium_driver_path = Path("/usr/bin/chromedriver")
-        service = ChromeDriverService(str(chromium_driver_path), ) if chromium_driver_path.exists() else ChromeDriverService(ChromeDriverManager().install(), )
+        service = ChromeService(ChromeDriverManager().install(), )
 
         # service.command_line_args()
         # service.service_args.remove('--verbose')
         # service.service_args.append('--log-path=/dev/null')
 
-        driver = ChromeDriver(
+        driver = webdriver.Chrome(
             service=service,
             options=options,
         )
@@ -128,6 +177,7 @@ def open_selenium_browser(browser_name: str, headless: bool, ):
 #     def __exit__(self, exc_type, exc_value, traceback):
 #         self.driver.quit()
 #         print("Exiting the block")
+
 
 def go_to_page_with_selenium(driver, url: str="https://verify.bmdc.org.bd/") -> tuple[WebDriver, str]:
     """Scrape text from a website using selenium
@@ -190,15 +240,14 @@ def process_image(img):
 def solve_captcha(img):
 
     ## OCR Solution (easyOCR)
-    reader = easyocr.Reader(['en']) # Maybe define this at the top, while importing packages
+    reader = easyocr.Reader(['en'],) # Maybe define this at the top, while importing packages
     result= reader.readtext(img, allowlist='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
     captcha_solution = result[0][1]
+
     ## Pytesseract
     # pytesseract.pytesseract.tesseract_cmd = "C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
     # config = '-c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRST0123456789 --psm 6'
     # captcha_solution = pytesseract.image_to_string(img_bin, config=config)
-
-    # Furnish text
 
     return captcha_solution
 
