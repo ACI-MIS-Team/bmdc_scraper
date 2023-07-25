@@ -1,3 +1,4 @@
+import os.path
 from pathlib import Path
 from sys import platform
 from typing import Optional, Type, Union
@@ -291,13 +292,15 @@ def get_doctor_dict_selenium(driver):
     reg_status = other_details[-1] if other_details else None
     # Scroll to the last element
     driver.execute_script("arguments[0].scrollIntoView();", reg_status)
-    permanent_add = other_details[-2] if other_details else None
+
     if len(other_details) > 2:
         father_name = other_details[0]
         mother_name = other_details[1]
+        permanent_add = other_details[-2]
     else:
         father_name = None
         mother_name = None
+        permanent_add = None
 
 
     doc_entry_dict = {
@@ -432,13 +435,13 @@ def main_multiprocess(doc_id_start, doc_id_end, browser_name, headless, workers=
                                "father_name", "mother_name", "permanent_add", "reg_status"])
 
     with cf.ProcessPoolExecutor(max_workers=workers) as executor:
-        fs = [executor.submit(single_doc_entry, i, browser_name, headless) for i in range(doc_id_start, doc_id_end+1)]
         total_tasks = doc_id_end - doc_id_start + 1
-
+        fs = [executor.submit(single_doc_entry, i, browser_name, headless) for i in range(doc_id_start, doc_id_end+1)]
         for f in tqdm(cf.as_completed(fs), total=total_tasks, bar_format='{l_bar}{bar:20}{r_bar}{bar:-20b} {percentage:3.0f}%'):
             df = df._append(f.result(), ignore_index=True)
 
     return df
+
 
 
 def main_mp2(doc_id_start, doc_id_end, browser_name, headless, workers=4):
@@ -467,7 +470,7 @@ if __name__=='__main__':
     parser.add_argument('-s','--start', type=int, help='website', default=11)
     parser.add_argument('-e', '--end', type=int, help='website', default=15)
     parser.add_argument('-b', '--browser', type=str, help='Browser name', default="chrome")
-    parser.add_argument('-h', '--headless', action='store_false',  help='Browser type', default=True)
+    parser.add_argument('-t', '--type', action='store_false',  help='Browser type', default=True)
 
     args = parser.parse_args()
 
@@ -477,23 +480,42 @@ if __name__=='__main__':
     doc_id_start = args.start
     doc_id_end = args.end
     browser_name = args.browser
-    headless = args.headless
+    headless = args.type
 
     num_processes = mp.cpu_count()
     workers = num_processes//2
     print(f"Number of parallel processes: {workers}")
+    if not os.path.isdir("./scraped_data"):
+        os.mkdir("./scraped_data")
 
     # # Main Function start
+    total_tasks = doc_id_end - doc_id_start + 1
+    delta = 20
+    if total_tasks <= delta:
+        df = main_multiprocess(doc_id_start, doc_id_end, browser_name, headless, workers=workers)
+        df.to_csv(f"./scraped_data/doctor_{doc_id_start}_{doc_id_end}.csv", index=False)
+    else:
+        id_start = doc_id_start
+        id_end = 11 + delta
+        while id_start <= doc_id_end:
+            df = main_multiprocess(id_start, id_end, browser_name, headless, workers=workers)
+            df.to_csv(f"./scraped_data/doctor_{id_start}_{id_end}.csv", index=False)
+            print(id_start, id_end)
+            id_start = id_end + 1
+            id_end = id_end + delta if id_end + delta <= doc_id_end else doc_id_end
+
+
+
     # print("Starting Browser. ------------------")
     # driver = open_selenium_browser(browser_name, headless=headless)
     # print("Browser Opened. Now scraping. ------------------")
 
     # df = main_multithread(doc_id_start, doc_id_end, browser_name, headless, workers=workers)
     # df = main_normal(doc_id_start, doc_id_end,browser_name, headless)
-    df = main_multiprocess(doc_id_start, doc_id_end, browser_name, headless, workers=workers)
+    # df = main_multiprocess(doc_id_start, doc_id_end, browser_name, headless, workers=workers)
     # df = main_mp2(doc_id_start, doc_id_end, browser_name, headless, workers=workers)
 
-    df.to_csv(f"doctor_{doc_id_start}_{doc_id_end}.csv", index=False)
+
 
     elapsed_time = time.time() - star_time
     print(f"Total Time taken: {elapsed_time//60} min, {elapsed_time - 60 * (elapsed_time//60)} sec.")
