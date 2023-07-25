@@ -202,7 +202,7 @@ def go_to_page_with_selenium(driver, url: str="https://verify.bmdc.org.bd/") -> 
     return driver, page_source
 
 
-def get_captcha_image(page_source)-> Image:
+def get_captcha_image(page_source):
     # page_source = requests.get(url=url)
     bs_html = BeautifulSoup(page_source, 'html.parser')
     with open("page_source.txt", "w") as file:
@@ -496,7 +496,7 @@ if __name__=='__main__':
         df.to_csv(f"./scraped_data/doctor_{doc_id_start}_{doc_id_end}.csv", index=False)
     else:
         id_start = doc_id_start
-        id_end = 11 + delta
+        id_end = doc_id_start + delta
         while id_start <= doc_id_end:
             df = main_multiprocess(id_start, id_end, browser_name, headless, workers=workers)
             df.to_csv(f"./scraped_data/doctor_{id_start}_{id_end}.csv", index=False)
