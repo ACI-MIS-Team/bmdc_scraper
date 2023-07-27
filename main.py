@@ -471,7 +471,7 @@ if __name__=='__main__':
     parser.add_argument('-e', '--end', type=int, help='website', default=15)
     parser.add_argument('-b', '--browser', type=str, help='Browser name', default="chrome")
     parser.add_argument('-t', '--headless', action='store_false',  help='Browser type', default=True)
-
+    parser.add_argument('-d', '--delta', type=int, help='Browser type', default=30)
     args = parser.parse_args()
 
     # Start Time
@@ -490,7 +490,7 @@ if __name__=='__main__':
 
     ## Main Function start
     total_tasks = doc_id_end - doc_id_start + 1
-    delta = 30
+    delta = args.delta
     if total_tasks <= delta:
         df = main_multiprocess(doc_id_start, doc_id_end, browser_name, headless, workers=workers)
         df.to_csv(f"./scraped_data/doctor_{doc_id_start}_{doc_id_end}.csv", index=False)
