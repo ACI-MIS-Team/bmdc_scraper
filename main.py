@@ -1,7 +1,7 @@
 import os.path
 from pathlib import Path
 from sys import platform
-from typing import Optional, Type, Union
+from typing import Optional, Type, Union, Tuple
 
 from bs4 import BeautifulSoup
 from multiprocessing import Pool, cpu_count
@@ -45,6 +45,8 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager as EdgeDriverM
 from webdriver_manager.core.utils import ChromeType
 from io import BytesIO
 from tqdm import tqdm
+
+import copy
 
 logging.basicConfig(filename='logfile.txt', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger('webdriver_manager').setLevel(logging.ERROR)
@@ -180,7 +182,7 @@ def open_selenium_browser_v2(browser_name: str, headless: bool, ):
 #         print("Exiting the block")
 
 
-def go_to_page_with_selenium(driver, url: str="https://verify.bmdc.org.bd/") -> tuple[WebDriver, str]:
+def go_to_page_with_selenium(driver, url: str="https://verify.bmdc.org.bd/") -> Tuple[WebDriver, str]:
     """Scrape text from a website using selenium
 
     Args:
@@ -272,6 +274,7 @@ def get_doctor_dict_selenium(driver):
     # driver.maximize_window()
     name_xpath = "//div[@class='col-md-8']/h3"
     bmdc_code_xpath = "//div[@class='text-center']/h3"
+    
 
     registration_year_xpath = "//h5[@class='font-weight-bold mb-0 d-block']"
     dob_bg_lxpath = "//div[@class='form-group row mb-0']/div/h6"
@@ -280,6 +283,7 @@ def get_doctor_dict_selenium(driver):
     name = driver.find_element(By.XPATH, name_xpath) if driver.find_element(By.XPATH, name_xpath) else None
     bmdc_code = driver.find_element(By.XPATH, bmdc_code_xpath) if driver.find_element(By.XPATH,
                                                                                       bmdc_code_xpath) else None
+    bm_code = copy.deepcopy(bmdc_code.text) # To solve the issue temporarily. Otherwise, execute_script sets bmdc_code to None
 
     registration_details = driver.find_elements(By.XPATH, registration_year_xpath)
     registration_year, registration_validity, _ = registration_details if registration_details else [None, None, None]
@@ -288,9 +292,11 @@ def get_doctor_dict_selenium(driver):
     dob, bg = dob_bg[:2] if dob_bg else [None, None]
 
     other_details = driver.find_elements(By.XPATH, other_lxpath)
-
+    
     reg_status = other_details[-1] if other_details else None
     # Scroll to the last element
+
+
     driver.execute_script("arguments[0].scrollIntoView();", reg_status)
 
     if len(other_details) > 2:
@@ -305,7 +311,7 @@ def get_doctor_dict_selenium(driver):
 
     doc_entry_dict = {
         "name": name.text if name else None,
-        "bmdc_code": bmdc_code.text if bmdc_code else None,
+        "bmdc_code": bm_code if bmdc_code else None,
         "registration_year": registration_year.text if registration_year else None,
         "registration_validity": registration_validity.text if registration_validity else None,
         "dob": dob.text if dob else None,
@@ -315,6 +321,8 @@ def get_doctor_dict_selenium(driver):
         "permanent_add": permanent_add.text if permanent_add else None,
         "reg_status": reg_status.text if reg_status else None,
     }
+
+
 
     return doc_entry_dict
 
@@ -346,6 +354,7 @@ def single_doc_entry(id, browser_name, headless):
     driver = open_selenium_browser(browser_name, headless=headless)
 
     captcha_incorrect = True
+    print(f'Captcha incorrect: {captcha_incorrect}')
     while captcha_incorrect:
         driver, page_source = go_to_page_with_selenium(driver)
         captcha_img = get_captcha_image(page_source)
