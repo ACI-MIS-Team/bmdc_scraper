@@ -47,6 +47,12 @@ from io import BytesIO
 from tqdm import tqdm
 
 import copy
+import csv
+
+# Defining constants
+
+DATA_LOGGER_HEADER = ['BMDC Code', 'No of Retries', 'Extraction Status', 'Elapsed Time for Extraction (Sec)']
+DATA_LOGGER_PATH = './error analysis/data_logger.csv'
 
 logging.basicConfig(filename='logfile.txt', level=logging.INFO, format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.getLogger('webdriver_manager').setLevel(logging.ERROR)
@@ -57,10 +63,32 @@ url=f'https://verify.bmdc.org.bd/'
 # browser_name="edge"
 # headless=True
 
+def write_data_logger(row):
+    """
+    write_data_logger writes a row to the data logger file.
+
+    Parameters:
+    -----------
+    row : list
+        This is a list containing information about a single extraction
+        
+    """
+    with open(DATA_LOGGER_PATH, 'a+') as f:
+        writer = csv.writer(f)
+        writer.writerow(row)
+
+def create_data_log_file():
+    """
+    This function creates a CSV file as per DATA_LOGGER_PATH constant, if the the log file does not already exist
+    """
+    if not os.path.exists(DATA_LOGGER_PATH):
+        write_data_logger(row=DATA_LOGGER_HEADER)
+
 
 def open_selenium_browser(browser_name: str, headless: bool):
     # browser_name = "firefox"
     # headless = False
+    # install_required = False
 
     options_available = {
         "chrome": ChromeOptions,
@@ -105,6 +133,7 @@ def open_selenium_browser_v2(browser_name: str, headless: bool, ):
     class Config:
         selenium_web_browser = browser_name
         selenium_headless = headless
+    
 
     config = Config()
     logging.getLogger("selenium").setLevel(logging.CRITICAL)
@@ -272,18 +301,26 @@ def submit_form_selenium(driver,  doc_id, captcha_solution,):
 
 def get_doctor_dict_selenium(driver):
     # driver.maximize_window()
+    validity = copy.deepcopy(driver.find_element(By.XPATH, "//div[@class='form-items']/h3").text)
+    if "Invalid Registration" in validity: 
+        bmdc_code = driver.find_element(By.XPATH, "//div[@class='text-center']/h3").text
+        return get_empty_row(bmdc_code=bmdc_code)
+                                                                # Some doctors' registration is invalid. 
+                                                                # If this program finds such sample, it will only store the bmdc code. Other
+                                                                # fields will remain None.
     name_xpath = "//div[@class='col-md-8']/h3"
     bmdc_code_xpath = "//div[@class='text-center']/h3"
-    
-
     registration_year_xpath = "//h5[@class='font-weight-bold mb-0 d-block']"
     dob_bg_lxpath = "//div[@class='form-group row mb-0']/div/h6"
     other_lxpath = "//div[@class='col-md-12']/h6"
 
+    
+
     name = driver.find_element(By.XPATH, name_xpath) if driver.find_element(By.XPATH, name_xpath) else None
     bmdc_code = driver.find_element(By.XPATH, bmdc_code_xpath) if driver.find_element(By.XPATH,
                                                                                       bmdc_code_xpath) else None
-    bm_code = copy.deepcopy(bmdc_code.text) # To solve the issue temporarily. Otherwise, execute_script sets bmdc_code to None
+    bm_code = copy.deepcopy(bmdc_code.text) 
+    name = copy.deepcopy(name.text)
 
     registration_details = driver.find_elements(By.XPATH, registration_year_xpath)
     registration_year, registration_validity, _ = registration_details if registration_details else [None, None, None]
@@ -291,13 +328,31 @@ def get_doctor_dict_selenium(driver):
     dob_bg = driver.find_elements(By.XPATH, dob_bg_lxpath)
     dob, bg = dob_bg[:2] if dob_bg else [None, None]
 
+    
+    
+
     other_details = driver.find_elements(By.XPATH, other_lxpath)
     
     reg_status = other_details[-1] if other_details else None
     # Scroll to the last element
+    # print(f'reg_status: {reg_status.text}')
+    
+    doc_entry_dict = {
+        "name": name if name else None,
+        "bmdc_code": bm_code if bmdc_code else None,
+        "registration_year": registration_year.text if registration_year else None,
+        "registration_validity": registration_validity.text if registration_validity else None,
+        "dob": dob.text if dob else None,
+        "bg": bg.text if bg else None,
+        "father_name": None,
+        "mother_name": None,
+        "permanent_add": None,
+        "reg_status": None,
+    }
 
 
     driver.execute_script("arguments[0].scrollIntoView();", reg_status)
+
 
     if len(other_details) > 2:
         father_name = other_details[0]
@@ -308,19 +363,13 @@ def get_doctor_dict_selenium(driver):
         mother_name = None
         permanent_add = None
 
-
-    doc_entry_dict = {
-        "name": name.text if name else None,
-        "bmdc_code": bm_code if bmdc_code else None,
-        "registration_year": registration_year.text if registration_year else None,
-        "registration_validity": registration_validity.text if registration_validity else None,
-        "dob": dob.text if dob else None,
-        "bg": bg.text if bg else None,
+    doc_entry_dict.update({
         "father_name": father_name.text if father_name else None,
         "mother_name": mother_name.text if mother_name else None,
         "permanent_add": permanent_add.text if permanent_add else None,
         "reg_status": reg_status.text if reg_status else None,
-    }
+    })
+    
 
 
 
@@ -354,7 +403,9 @@ def single_doc_entry(id, browser_name, headless):
     driver = open_selenium_browser(browser_name, headless=headless)
 
     captcha_incorrect = True
-    print(f'Captcha incorrect: {captcha_incorrect}')
+    num_of_retries = 0
+    start_time = time.time()
+    # print(f'Printing for id: {id}')
     while captcha_incorrect:
         driver, page_source = go_to_page_with_selenium(driver)
         captcha_img = get_captcha_image(page_source)
@@ -364,11 +415,18 @@ def single_doc_entry(id, browser_name, headless):
         try:
             doc_entry_dict = get_doctor_dict_selenium(driver)
             driver.close()
+            elapsed_time = round(time.time()-start_time, 2)
+            extraction_status = 'Unsuccessful' if doc_entry_dict['name'] == None else 'Successful'
+            data_logger_row = [doc_entry_dict['bmdc_code'], num_of_retries, extraction_status, elapsed_time]
+            write_data_logger(row=data_logger_row)
+            print('driver closed')
+
             return doc_entry_dict
         except NoSuchElementException:
             captcha_incorrect = True
+            num_of_retries += 1
             pass
-        time.sleep(3)
+        time.sleep(10)
 
 
 def mp_doc_entry(id_start, id_end, browser_name, headless):
@@ -473,6 +531,27 @@ def main_mp2(doc_id_start, doc_id_end, browser_name, headless, workers=4):
 
     return df
 
+def get_empty_row(bmdc_code):
+    """
+    Creates a dict with only bmdc_code of a particular entry. All other parameters of this dictionary is set to None.
+    
+    """
+
+    empty_doc_entry_dict = {
+        "name": None,
+        "bmdc_code": bmdc_code,
+        "registration_year": None,
+        "registration_validity": None,
+        "dob": None,
+        "bg": None,
+        "father_name": None,
+        "mother_name": None,
+        "permanent_add": None,
+        "reg_status": None,
+    }
+
+    return empty_doc_entry_dict
+
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description="Give the range of doctor id to scrape")
@@ -490,12 +569,17 @@ if __name__=='__main__':
     doc_id_end = args.end
     browser_name = args.browser
     headless = args.headless
+    delta = args.delta
 
     num_processes = mp.cpu_count()
     workers = num_processes//2
+    
     print(f"Number of parallel processes: {workers}")
     if not os.path.isdir("./scraped_data"):
         os.mkdir("./scraped_data")
+
+    create_data_log_file() # Create an empty csv file with headers only
+    
 
     ## Main Function start
     total_tasks = doc_id_end - doc_id_start + 1

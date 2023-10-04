@@ -1,0 +1,422 @@
+09/14/2023 04:33:05 PM ====== WebDriver manager ======
+09/14/2023 04:33:05 PM ====== WebDriver manager ======
+09/14/2023 04:33:05 PM ====== WebDriver manager ======
+09/14/2023 04:33:05 PM ====== WebDriver manager ======
+09/14/2023 04:33:05 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:05 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:05 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:05 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:06 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 04:33:06 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 04:33:06 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 04:33:06 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 04:33:07 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 04:33:07 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 04:33:07 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 04:33:07 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 04:33:14 PM ====== WebDriver manager ======
+09/14/2023 04:33:14 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:14 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 04:33:15 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 04:33:18 PM ====== WebDriver manager ======
+09/14/2023 04:33:18 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:19 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 04:33:19 PM ====== WebDriver manager ======
+09/14/2023 04:33:19 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:20 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 04:33:20 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 04:33:20 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 04:33:20 PM ====== WebDriver manager ======
+09/14/2023 04:33:21 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:21 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 04:33:22 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 04:33:22 PM ====== WebDriver manager ======
+09/14/2023 04:33:22 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:23 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 04:33:24 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 04:33:25 PM ====== WebDriver manager ======
+09/14/2023 04:33:25 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:27 PM ====== WebDriver manager ======
+09/14/2023 04:33:27 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 04:33:27 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:27 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 04:33:27 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 04:33:28 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 04:33:31 PM ====== WebDriver manager ======
+09/14/2023 04:33:32 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:32 PM ====== WebDriver manager ======
+09/14/2023 04:33:33 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:33 PM ====== WebDriver manager ======
+09/14/2023 04:33:33 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:34 PM ====== WebDriver manager ======
+09/14/2023 04:33:34 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:34 PM ====== WebDriver manager ======
+09/14/2023 04:33:34 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:34 PM ====== WebDriver manager ======
+09/14/2023 04:33:34 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:35 PM ====== WebDriver manager ======
+09/14/2023 04:33:35 PM ====== WebDriver manager ======
+09/14/2023 04:33:35 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:35 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:35 PM ====== WebDriver manager ======
+09/14/2023 04:33:35 PM ====== WebDriver manager ======
+09/14/2023 04:33:35 PM ====== WebDriver manager ======
+09/14/2023 04:33:36 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:36 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:36 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:36 PM ====== WebDriver manager ======
+09/14/2023 04:33:36 PM ====== WebDriver manager ======
+09/14/2023 04:33:36 PM ====== WebDriver manager ======
+09/14/2023 04:33:36 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:36 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:36 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:37 PM ====== WebDriver manager ======
+09/14/2023 04:33:37 PM ====== WebDriver manager ======
+09/14/2023 04:33:37 PM ====== WebDriver manager ======
+09/14/2023 04:33:37 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:37 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:37 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:37 PM ====== WebDriver manager ======
+09/14/2023 04:33:37 PM ====== WebDriver manager ======
+09/14/2023 04:33:37 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:37 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:37 PM ====== WebDriver manager ======
+09/14/2023 04:33:37 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:38 PM ====== WebDriver manager ======
+09/14/2023 04:33:38 PM ====== WebDriver manager ======
+09/14/2023 04:33:38 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:38 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:38 PM ====== WebDriver manager ======
+09/14/2023 04:33:38 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:38 PM ====== WebDriver manager ======
+09/14/2023 04:33:38 PM ====== WebDriver manager ======
+09/14/2023 04:33:38 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:38 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:38 PM ====== WebDriver manager ======
+09/14/2023 04:33:38 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:38 PM ====== WebDriver manager ======
+09/14/2023 04:33:39 PM ====== WebDriver manager ======
+09/14/2023 04:33:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:39 PM ====== WebDriver manager ======
+09/14/2023 04:33:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:39 PM ====== WebDriver manager ======
+09/14/2023 04:33:39 PM ====== WebDriver manager ======
+09/14/2023 04:33:39 PM ====== WebDriver manager ======
+09/14/2023 04:33:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:39 PM ====== WebDriver manager ======
+09/14/2023 04:33:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:39 PM ====== WebDriver manager ======
+09/14/2023 04:33:39 PM ====== WebDriver manager ======
+09/14/2023 04:33:39 PM ====== WebDriver manager ======
+09/14/2023 04:33:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:39 PM ====== WebDriver manager ======
+09/14/2023 04:33:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:40 PM ====== WebDriver manager ======
+09/14/2023 04:33:40 PM ====== WebDriver manager ======
+09/14/2023 04:33:40 PM ====== WebDriver manager ======
+09/14/2023 04:33:40 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:40 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:40 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:40 PM ====== WebDriver manager ======
+09/14/2023 04:33:40 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:40 PM ====== WebDriver manager ======
+09/14/2023 04:33:40 PM ====== WebDriver manager ======
+09/14/2023 04:33:40 PM ====== WebDriver manager ======
+09/14/2023 04:33:40 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:40 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:40 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:40 PM ====== WebDriver manager ======
+09/14/2023 04:33:40 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:40 PM ====== WebDriver manager ======
+09/14/2023 04:33:40 PM ====== WebDriver manager ======
+09/14/2023 04:33:40 PM ====== WebDriver manager ======
+09/14/2023 04:33:41 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:41 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:33:41 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:41 PM ====== WebDriver manager ======
+09/14/2023 04:34:41 PM ====== WebDriver manager ======
+09/14/2023 04:34:41 PM ====== WebDriver manager ======
+09/14/2023 04:34:41 PM ====== WebDriver manager ======
+09/14/2023 04:34:41 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:41 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:41 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:41 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:41 PM ====== WebDriver manager ======
+09/14/2023 04:34:41 PM ====== WebDriver manager ======
+09/14/2023 04:34:41 PM ====== WebDriver manager ======
+09/14/2023 04:34:41 PM ====== WebDriver manager ======
+09/14/2023 04:34:41 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:41 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:41 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:41 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:42 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:42 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:42 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:42 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:42 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:42 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:42 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:42 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:42 PM ====== WebDriver manager ======
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:43 PM ====== WebDriver manager ======
+09/14/2023 04:34:43 PM ====== WebDriver manager ======
+09/14/2023 04:34:43 PM ====== WebDriver manager ======
+09/14/2023 04:34:43 PM ====== WebDriver manager ======
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:43 PM ====== WebDriver manager ======
+09/14/2023 04:34:43 PM ====== WebDriver manager ======
+09/14/2023 04:34:43 PM ====== WebDriver manager ======
+09/14/2023 04:34:43 PM ====== WebDriver manager ======
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:43 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM ====== WebDriver manager ======
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:44 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:45 PM ====== WebDriver manager ======
+09/14/2023 04:34:45 PM ====== WebDriver manager ======
+09/14/2023 04:34:45 PM ====== WebDriver manager ======
+09/14/2023 04:34:45 PM ====== WebDriver manager ======
+09/14/2023 04:34:45 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:45 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:45 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:45 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:45 PM ====== WebDriver manager ======
+09/14/2023 04:34:45 PM ====== WebDriver manager ======
+09/14/2023 04:34:45 PM ====== WebDriver manager ======
+09/14/2023 04:34:45 PM ====== WebDriver manager ======
+09/14/2023 04:34:45 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:45 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:45 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:45 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:46 PM ====== WebDriver manager ======
+09/14/2023 04:34:46 PM ====== WebDriver manager ======
+09/14/2023 04:34:46 PM ====== WebDriver manager ======
+09/14/2023 04:34:46 PM ====== WebDriver manager ======
+09/14/2023 04:34:46 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:46 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:46 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:46 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:46 PM ====== WebDriver manager ======
+09/14/2023 04:34:46 PM ====== WebDriver manager ======
+09/14/2023 04:34:46 PM ====== WebDriver manager ======
+09/14/2023 04:34:46 PM ====== WebDriver manager ======
+09/14/2023 04:34:46 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:46 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:46 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:46 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:46 PM ====== WebDriver manager ======
+09/14/2023 04:34:46 PM ====== WebDriver manager ======
+09/14/2023 04:34:46 PM ====== WebDriver manager ======
+09/14/2023 04:34:47 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:47 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:34:47 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:37:48 PM ====== WebDriver manager ======
+09/14/2023 04:37:48 PM ====== WebDriver manager ======
+09/14/2023 04:37:48 PM ====== WebDriver manager ======
+09/14/2023 04:37:48 PM ====== WebDriver manager ======
+09/14/2023 04:37:48 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:37:48 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:37:48 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:37:48 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:37:48 PM ====== WebDriver manager ======
+09/14/2023 04:37:48 PM ====== WebDriver manager ======
+09/14/2023 04:37:48 PM ====== WebDriver manager ======
+09/14/2023 04:37:48 PM ====== WebDriver manager ======
+09/14/2023 04:37:48 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:37:48 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:37:48 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:37:48 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 04:37:48 PM ====== WebDriver manager ======
+09/14/2023 04:37:49 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:36:51 PM ====== WebDriver manager ======
+09/14/2023 05:36:51 PM ====== WebDriver manager ======
+09/14/2023 05:36:51 PM ====== WebDriver manager ======
+09/14/2023 05:36:51 PM ====== WebDriver manager ======
+09/14/2023 05:36:52 PM There is no [linux64] geckodriver "latest" for browser firefox "117.0" in cache
+09/14/2023 05:36:52 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:36:52 PM There is no [linux64] geckodriver "latest" for browser firefox "117.0" in cache
+09/14/2023 05:36:52 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:36:52 PM There is no [linux64] geckodriver "latest" for browser firefox "117.0" in cache
+09/14/2023 05:36:52 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:36:52 PM There is no [linux64] geckodriver "latest" for browser firefox "117.0" in cache
+09/14/2023 05:36:52 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:36:52 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:36:52 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:36:52 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:36:52 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:36:52 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:36:52 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:36:52 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:36:52 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:36:56 PM ====== WebDriver manager ======
+09/14/2023 05:36:56 PM There is no [linux64] geckodriver "latest" for browser firefox "117.0" in cache
+09/14/2023 05:36:56 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:36:57 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:36:57 PM ====== WebDriver manager ======
+09/14/2023 05:36:57 PM There is no [linux64] geckodriver "latest" for browser firefox "117.0" in cache
+09/14/2023 05:36:57 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:36:57 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:36:57 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:36:58 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:01 PM ====== WebDriver manager ======
+09/14/2023 05:37:01 PM ====== WebDriver manager ======
+09/14/2023 05:37:01 PM There is no [linux64] geckodriver "latest" for browser firefox "117.0" in cache
+09/14/2023 05:37:01 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:01 PM There is no [linux64] geckodriver "latest" for browser firefox "117.0" in cache
+09/14/2023 05:37:01 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:01 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:01 PM ====== WebDriver manager ======
+09/14/2023 05:37:01 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:01 PM There is no [linux64] geckodriver "latest" for browser firefox "117.0" in cache
+09/14/2023 05:37:01 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:01 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:01 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:01 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:02 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:36 PM ====== WebDriver manager ======
+09/14/2023 05:37:36 PM ====== WebDriver manager ======
+09/14/2023 05:37:36 PM ====== WebDriver manager ======
+09/14/2023 05:37:36 PM ====== WebDriver manager ======
+09/14/2023 05:37:37 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:37 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:37 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:37 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:37 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:37 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:37 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:37 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:38 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:38 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:39 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:39 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:52 PM ====== WebDriver manager ======
+09/14/2023 05:37:52 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:52 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:53 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:53 PM ====== WebDriver manager ======
+09/14/2023 05:37:53 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:53 PM ====== WebDriver manager ======
+09/14/2023 05:37:53 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:53 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:53 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:53 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:54 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:55 PM ====== WebDriver manager ======
+09/14/2023 05:37:56 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:56 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:56 PM ====== WebDriver manager ======
+09/14/2023 05:37:56 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:37:56 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:37:57 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:37:58 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:38:27 PM ====== WebDriver manager ======
+09/14/2023 05:38:27 PM ====== WebDriver manager ======
+09/14/2023 05:38:27 PM ====== WebDriver manager ======
+09/14/2023 05:38:27 PM ====== WebDriver manager ======
+09/14/2023 05:38:28 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:38:28 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:38:28 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:38:28 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:38:30 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:38:30 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:38:30 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:38:30 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:38:32 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:38:32 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:38:32 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:38:32 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:38:35 PM ====== WebDriver manager ======
+09/14/2023 05:38:35 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:38:36 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:38:36 PM About to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.33.0/geckodriver-v0.33.0-linux64.tar.gz
+09/14/2023 05:38:39 PM ====== WebDriver manager ======
+09/14/2023 05:38:39 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:38:39 PM Getting latest mozilla release info for v0.33.0
+09/14/2023 05:38:39 PM ====== WebDriver manager ======
+09/14/2023 05:38:39 PM ====== WebDriver manager ======
+09/14/2023 05:38:40 PM ====== WebDriver manager ======
+09/14/2023 05:38:40 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:38:40 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:38:40 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:43:33 PM ====== WebDriver manager ======
+09/14/2023 05:43:33 PM ====== WebDriver manager ======
+09/14/2023 05:43:33 PM ====== WebDriver manager ======
+09/14/2023 05:43:33 PM ====== WebDriver manager ======
+09/14/2023 05:43:33 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:43:33 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:43:33 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:43:33 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:43:34 PM ====== WebDriver manager ======
+09/14/2023 05:43:34 PM ====== WebDriver manager ======
+09/14/2023 05:43:34 PM ====== WebDriver manager ======
+09/14/2023 05:43:34 PM ====== WebDriver manager ======
+09/14/2023 05:43:34 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:43:34 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:43:34 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:43:34 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:43:34 PM ====== WebDriver manager ======
+09/14/2023 05:43:34 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:44:16 PM ====== WebDriver manager ======
+09/14/2023 05:44:16 PM ====== WebDriver manager ======
+09/14/2023 05:44:16 PM ====== WebDriver manager ======
+09/14/2023 05:44:16 PM ====== WebDriver manager ======
+09/14/2023 05:44:16 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:44:16 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:44:16 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:44:16 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:44:16 PM ====== WebDriver manager ======
+09/14/2023 05:44:16 PM ====== WebDriver manager ======
+09/14/2023 05:44:16 PM ====== WebDriver manager ======
+09/14/2023 05:44:16 PM ====== WebDriver manager ======
+09/14/2023 05:44:16 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:44:16 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:44:16 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:44:16 PM Get LATEST geckodriver version for 117.0 firefox
+09/14/2023 05:44:17 PM ====== WebDriver manager ======
+09/14/2023 05:44:17 PM Get LATEST geckodriver version for 117.0 firefox
