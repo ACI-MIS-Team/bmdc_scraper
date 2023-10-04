@@ -8,7 +8,7 @@ pandas==2.0.1
 Pillow==9.5.0
 Requests==2.31.0
 selenium==4.10.0
-webdriver_manager
+webdriver_manager==3.8.6
 
 # for cpu torch
 --find-links https://download.pytorch.org/whl/cpu/torch/

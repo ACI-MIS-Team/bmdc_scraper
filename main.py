@@ -82,6 +82,7 @@ def create_data_log_file():
     This function creates a CSV file as per DATA_LOGGER_PATH constant, if the the log file does not already exist
     """
     if not os.path.exists(DATA_LOGGER_PATH):
+        os.makedirs(os.path.dirname(DATA_LOGGER_PATH))
         write_data_logger(row=DATA_LOGGER_HEADER)
 
 
