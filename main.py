@@ -113,9 +113,9 @@ def open_selenium_browser(browser_name: str, headless: bool):
     elif browser_name == "firefox":
         options.log.level = "fatal"
         driver = webdriver.Firefox(
-            service=GeckoService(
-                GeckoDriverManager().install()
-            ),
+            # service=GeckoService(
+            #     GeckoDriverManager().install()
+            # ),
             options=options
         )
     else:
